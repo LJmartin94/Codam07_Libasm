@@ -10,6 +10,15 @@
 ;#                                                                              #
 ;# **************************************************************************** #
 
+; DATA Registers (ABCD - X): EAX - AX - AH & AL
+; AX - primary accumulator (input/output for arithmetic operands)
+; BX - base register, can be used in indexed addressing
+; CX - count register, store e.g. loop count in iterative operations
+; DX - data register, also an input output register (used in conjunction with AX)
+
+; POINTER Registers (ISB - P): ESP - SP
+;
+
 section .data
 ; The data section is used for declaring initialized data or constants. 
 ; This data does not change at runtime.
