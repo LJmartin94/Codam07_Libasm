@@ -17,7 +17,7 @@ section .bss
 
 section .text
 
-global ft_strlen
-ft_strlen:
+global _ft_strlen
+_ft_strlen:
 	mov rax, 0 ; Move value 0 to register AX
 	ret ; Return the value in rax

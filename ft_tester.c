@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
-int compare(int64_t a, int64_t b);
+//int compare(int64_t a, int64_t b);
+#include "ft_libasm.h"
 
 int ft_test_compare(int argc, char **argv)
 {
@@ -12,7 +13,7 @@ int ft_test_compare(int argc, char **argv)
 		return (0);
 	a = atoi(argv[1]);
 	b = atoi(argv[2]);
-	printf("%d", compare(a, b));
+	printf("%d\n", compare(a, b));
 	return (0);
 }
 
@@ -20,7 +21,7 @@ int ft_test_strlen(int argc, char **argv)
 {
 	if (argc != 2)
 		return (0);
-	printf("%d",ft_strlen(argv[1]));
+	printf("%lu\n",ft_strlen(argv[1]));
 	return (0);
 }
 

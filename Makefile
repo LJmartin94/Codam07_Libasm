@@ -6,7 +6,7 @@
 #    By: limartin <limartin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/07/21 21:07:36 by limartin      #+#    #+#                  #
-#    Updated: 2021/03/18 14:48:57 by limartin      ########   odam.nl          #
+#    Updated: 2021/03/18 15:57:11 by limartin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,14 +36,17 @@ OBJ := ${SRC:%.s=%.o}
 
 all: $(NAME)
 
+test:
+	gcc -o tester ft_tester.c -L. -lasm -I $(INCL_PATH)
+
 $(NAME): $(OBJ)
-	ld -m elf_x86_64 -s -o $(NAME) $(OBJ)
+	ar -rcs $(NAME) $(OBJ)
 	# ld -m elf_x86_64 -s -o $(NAME) $(OBJ)
 #$(CFLAGS)
 
 %.o: %.s $(HEADER_FILES)
-	$(CC) -o $@ -f elf64 $< -I $(INCL_PATH)
-#$(CFLAGS) 
+	$(CC) -o $@ -f macho64 $< -I $(INCL_PATH)
+	# $(CC) -o $@ -f elf64 $< -I $(INCL_PATH)
 
 bonus:
 	@ $(MAKE)
@@ -53,6 +56,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f tester
 
 re: fclean all
 

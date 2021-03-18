@@ -15,8 +15,8 @@ section .text
 	; mov rax, 60
 	; syscall
 
-global compare
-compare:
+global _compare
+_compare:
 	cmp rdi, rsi
 	je zero
 	jl negative 
