@@ -6,7 +6,7 @@
 #    By: limartin <limartin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/07/21 21:07:36 by limartin      #+#    #+#                  #
-#    Updated: 2021/02/18 21:43:01 by lindsay       ########   odam.nl          #
+#    Updated: 2021/03/18 14:48:57 by limartin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC		= $(SRC_PATH)ft_strlen.s \
 	$(SRC_PATH)ft_write.s \
 	$(SRC_PATH)ft_read.s \
 	$(SRC_PATH)ft_strdup.s \
+	$(SRC_PATH)spark.s \
 
 
 #Object files
@@ -37,6 +38,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	ld -m elf_x86_64 -s -o $(NAME) $(OBJ)
+	# ld -m elf_x86_64 -s -o $(NAME) $(OBJ)
 #$(CFLAGS)
 
 %.o: %.s $(HEADER_FILES)
