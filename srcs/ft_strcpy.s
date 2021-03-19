@@ -11,20 +11,21 @@
 ;# **************************************************************************** #
 
 section .data
-extern _ft_strlen
+extern ft_strlen
 
 section .bss
 
 section .text
 
-global _ft_strcpy
-_ft_strcpy:
-	call _ft_strlen
+global ft_strcpy
+ft_strcpy:
+	call ft_strlen
 	mov rcx, rax	; Initialise our index to the val returned by ft_strlen
 	mov rax, rsi	; Move 'dest' RSI to the return val register RAX
 	loop:			; Copy string
 	;{
-		mov rsi+rcx, byte [rdi+rcx]	; Bad syntax. RSI = Dest, RDI = src
+		mov rsi, qword [rdi+rcx]
+		;mov rsi+rcx, byte [rdi+rcx]	; Bad syntax. RSI = Dest, RDI = src
 		cmp rcx, 0
 		je exit
 		dec rcx

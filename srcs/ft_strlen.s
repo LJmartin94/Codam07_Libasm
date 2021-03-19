@@ -16,8 +16,8 @@ section .bss
 
 section .text
 
-global _ft_strlen
-_ft_strlen:
+global ft_strlen
+ft_strlen:
 	mov rcx, 0						; Initialise our counter to 0
 	loop:							; Find null terinator
 	;{

@@ -6,7 +6,7 @@
 #    By: limartin <limartin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/07/21 21:07:36 by limartin      #+#    #+#                  #
-#    Updated: 2021/03/18 18:40:46 by limartin      ########   odam.nl          #
+#    Updated: 2021/03/19 16:48:28 by lindsay       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,8 @@ $(NAME): $(OBJ)
 #$(CFLAGS)
 
 %.o: %.s $(HEADER_FILES)
-	$(CC) -o $@ -f macho64 $< -I $(INCL_PATH)
-	# $(CC) -o $@ -f elf64 $< -I $(INCL_PATH)
+	# $(CC) -o $@ -f macho64 $< -I $(INCL_PATH)
+	$(CC) -o $@ -f elf64 $< -I $(INCL_PATH)
 
 bonus:
 	@ $(MAKE)

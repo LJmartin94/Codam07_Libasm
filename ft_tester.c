@@ -10,6 +10,8 @@ int ft_test_strcpy(int argc, char **argv)
 	char *src;
 	char *dest;
 
+	if (argc != 2)
+		return (0);
 	src = argv[1];
 	dest = (char *)malloc(sizeof(char) * (strlen(argv[1]) + 1));
 	ft_strcpy(src, dest);
@@ -36,7 +38,7 @@ int ft_test_compare(int argc, char **argv)
 		return (0);
 	a = atoi(argv[1]);
 	b = atoi(argv[2]);
-	printf("%d\n", compare(a, b));
+	//printf("%d\n", compare(a, b));
 	return (0);
 }
 
