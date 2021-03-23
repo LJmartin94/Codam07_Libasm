@@ -15,8 +15,8 @@ extern ft_strlen
 ; Defining registers with friendly variable names:
 %define RET rax
 %define INX rcx
-%define SRC rdi
-%define DST rsi
+%define DST rdi
+%define SRC rsi
 %define CHR r10b
 
 section .bss

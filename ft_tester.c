@@ -14,7 +14,7 @@ int ft_test_strcpy(int argc, char **argv)
 		return (0);
 	src = argv[1];
 	dest = (char *)malloc(sizeof(char) * (strlen(argv[1]) + 1));
-	ft_strcpy(src, dest);
+	ft_strcpy(dest, src);
 	src[0] = '\0';
 	argv[1][0] = '\0';
 	printf("%s\n", dest);
