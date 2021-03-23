@@ -26,8 +26,8 @@ section .text
 global ft_strcpy
 ft_strcpy:
 	call ft_strlen				; Fetch the length of SRC string
-	mov INX, RET				; Index == the return val from ft_strlen
-	mov RET, DST				; Return val == Destination passed as arg
+	mov INX, RET				; Index = the return val from ft_strlen
+	mov RET, DST				; Return val = Destination passed as arg
 	loop:						; Copy string from back to front
 	;{
 		mov CHR, byte [SRC+INX]	; Move character from source to buffer
