@@ -33,7 +33,7 @@ ft_strcmp:
 		jg positive				; If S1 > S2, go to positive
 		cmp CHR, 0x0			; Check for null terminator
 		je equal				; Quit if null terminator found
-		inc INX					; Increment index
+		inc INX					; Else increment index
 		jmp loop				; And begin from the start again
 	;}
 
