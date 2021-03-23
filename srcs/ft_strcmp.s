@@ -28,11 +28,11 @@ ft_strcmp:
 	loop:
 	;{
 		mov CHR, byte [S1+INX]	; Move the character to compare from S1 to buf
-		cmp CHR, 0x0			; Check for null terminator
-		je equal				; Quit if null terminator found
 		cmp CHR, byte [S2+INX]	; Compare S1 char to S2 char
 		jl negative				; If S2 > S1, go to negative
 		jg positive				; If S1 > S2, go to positive
+		cmp CHR, 0x0			; Check for null terminator
+		je equal				; Quit if null terminator found
 		inc INX					; Increment index
 		jmp loop				; And begin from the start again
 	;}

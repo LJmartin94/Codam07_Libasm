@@ -5,6 +5,21 @@
 //int compare(int64_t a, int64_t b);
 #include "ft_libasm.h"
 
+int ft_test_strcmp(int argc, char **argv)
+{
+	char *s1;
+	char *s2;
+	int ret;
+
+	if (argc != 3)
+		return (0);
+	s1 = argv[1];
+	s2 = argv[2];
+	ret = ft_strcmp(s1, s2);
+	printf("%d\n", ret);
+	return (0);
+}
+
 int ft_test_strcpy(int argc, char **argv)
 {
 	char *src;
@@ -48,7 +63,9 @@ int main(int argc, char **argv)
 		ft_test_compare(argc, argv);
 	if (0)
 		ft_test_strlen(argc, argv);
-	if (1)
+	if (0)
 		ft_test_strcpy(argc, argv);
+	if (1)
+		ft_test_strcmp(argc, argv);
 	return (0);
 }
