@@ -57,6 +57,23 @@ int ft_test_compare(int argc, char **argv)
 	return (0);
 }
 
+int ft_test_write(int argc, char **argv)
+{
+	int fd;
+	char *buf;
+	int len;
+	int ret;
+
+	if (argc != 4)
+		return (0);
+	fd = atoi(argv[1]);
+	buf = argv[2];
+	len = atoi(argv[3]);
+	ret = ft_write(fd, buf, len);
+	printf("\nReturn value from write: %d\n", ret);
+	return (ret);
+}
+
 int main(int argc, char **argv)
 {
 	if (0)
@@ -65,7 +82,9 @@ int main(int argc, char **argv)
 		ft_test_strlen(argc, argv);
 	if (0)
 		ft_test_strcpy(argc, argv);
-	if (1)
+	if (0)
 		ft_test_strcmp(argc, argv);
+	if (1)
+		ft_test_write(argc, argv);
 	return (0);
 }

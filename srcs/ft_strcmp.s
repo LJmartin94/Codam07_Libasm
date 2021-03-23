@@ -27,7 +27,7 @@ ft_strcmp:
 	mov INX, 0					; Initialise index to 0
 	loop:
 	;{
-		mov CHR, byte [S1+INX]	; Move the character to compare from S1 to buf
+		mov CHR, byte [S1+INX]	; Copy the character to compare from S1 to buf
 		cmp CHR, byte [S2+INX]	; Compare S1 char to S2 char
 		jl negative				; If S2 > S1, go to negative
 		jg positive				; If S1 > S2, go to positive

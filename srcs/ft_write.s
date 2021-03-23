@@ -11,6 +11,14 @@
 ;# **************************************************************************** #
 
 section .data
+; Defining user-friendly register and syscall names:
+%define WRITE 1
+%define SYS rax
+
+%define RET rax
+%define FD rdi
+%define BUF rsi
+%define LEN rdx
 
 section .bss
 
@@ -18,5 +26,7 @@ section .text
 
 global ft_write
 ft_write:
-	mov rax, 0 ; Move value 0 to register AX
-	ret ; Return the value in rax
+	mov SYS, WRITE	; Select the write system call
+	syscall			; Perform syscall
+	; Check for errors?
+	ret 			; Return the value in rax
