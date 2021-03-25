@@ -6,7 +6,7 @@
 #    By: limartin <limartin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/07/21 21:07:36 by limartin      #+#    #+#                  #
-#    Updated: 2021/03/25 13:06:45 by limartin      ########   odam.nl          #
+#    Updated: 2021/03/25 13:30:27 by limartin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,10 @@ OS = $(shell uname)
 
 ifeq ($(OS),Linux)
 	OS_PATH = linux/
-	OS_ASM = elf64
+	OS_FORMAT = elf64
 else
 	OS_PATH = mac/
-	OS_ASM = macho64
+	OS_FORMAT = macho64
 endif
 
 CC = nasm
@@ -53,7 +53,7 @@ $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
 %.o: %.s $(HEADER_FILES)
-	$(CC) -o $@ -f $(OS_ASM) $< -I $(INCL_PATH)
+	$(CC) -o $@ -f $(OS_FORMAT) $< -I $(INCL_PATH)
 
 bonus:
 	@ $(MAKE)

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include <errno.h>
 //int compare(int64_t a, int64_t b);
 #include "ft_libasm.h"
 
@@ -70,6 +71,8 @@ int ft_test_write(int argc, char **argv)
 	buf = argv[2];
 	len = atoi(argv[3]);
 	ret = ft_write(fd, buf, len);
+	if (errno != 0)
+		printf("An error occurred, errno = %d\n", errno);
 	printf("\nReturn value from write: %d\n", ret);
 	return (ret);
 }
