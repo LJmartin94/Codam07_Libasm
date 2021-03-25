@@ -6,7 +6,7 @@
 #    By: limartin <limartin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/07/21 21:07:36 by limartin      #+#    #+#                  #
-#    Updated: 2021/03/25 12:47:47 by limartin      ########   odam.nl          #
+#    Updated: 2021/03/25 13:06:45 by limartin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,15 @@ SRC_PATH = ./srcs/
 
 INCL_PATH = ./incl/
 
-OS_PATH = mac/
-# linux/
+OS = $(shell uname)
 
-OS_ASM = macho64
-# elf64
+ifeq ($(OS),Linux)
+	OS_PATH = linux/
+	OS_ASM = elf64
+else
+	OS_PATH = mac/
+	OS_ASM = macho64
+endif
 
 CC = nasm
 
