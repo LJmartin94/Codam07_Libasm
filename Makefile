@@ -6,7 +6,7 @@
 #    By: limartin <limartin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/07/21 21:07:36 by limartin      #+#    #+#                  #
-#    Updated: 2021/03/19 16:48:28 by lindsay       ########   odam.nl          #
+#    Updated: 2021/03/25 12:47:47 by limartin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,25 @@ SRC_PATH = ./srcs/
 
 INCL_PATH = ./incl/
 
+OS_PATH = mac/
+# linux/
+
+OS_ASM = macho64
+# elf64
+
 CC = nasm
 
 #CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 HEADER_FILES = $(INCL_PATH)ft_libasm.h
 
-SRC		= $(SRC_PATH)ft_strlen.s \
-	$(SRC_PATH)ft_strcpy.s \
-	$(SRC_PATH)ft_strcmp.s \
-	$(SRC_PATH)ft_write.s \
-	$(SRC_PATH)ft_read.s \
-	$(SRC_PATH)ft_strdup.s \
-	$(SRC_PATH)spark.s \
+SRC		= $(SRC_PATH)$(OS_PATH)ft_strlen.s \
+	$(SRC_PATH)$(OS_PATH)ft_strcpy.s \
+	$(SRC_PATH)$(OS_PATH)ft_strcmp.s \
+	$(SRC_PATH)$(OS_PATH)ft_write.s \
+	$(SRC_PATH)$(OS_PATH)ft_read.s \
+	$(SRC_PATH)$(OS_PATH)ft_strdup.s \
+	$(SRC_PATH)$(OS_PATH)spark.s \
 
 
 #Object files
@@ -41,12 +47,9 @@ test:
 
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
-	# ld -m elf_x86_64 -s -o $(NAME) $(OBJ)
-#$(CFLAGS)
 
 %.o: %.s $(HEADER_FILES)
-	# $(CC) -o $@ -f macho64 $< -I $(INCL_PATH)
-	$(CC) -o $@ -f elf64 $< -I $(INCL_PATH)
+	$(CC) -o $@ -f $(OS_ASM) $< -I $(INCL_PATH)
 
 bonus:
 	@ $(MAKE)
