@@ -1,6 +1,8 @@
 #ifndef LIBASM_H
 # define LIBASM_H
 
+#include <errno.h>
+
 unsigned long	ft_strlen(char *str);
 char			*ft_strcpy(char *dst, char *src);
 int				ft_strcmp(char *s1, char *s2);

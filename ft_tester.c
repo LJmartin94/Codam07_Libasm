@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <errno.h>
+#include <fcntl.h>
 //int compare(int64_t a, int64_t b);
 #include "ft_libasm.h"
 
@@ -68,6 +69,9 @@ int ft_test_write(int argc, char **argv)
 	if (argc != 4)
 		return (0);
 	fd = atoi(argv[1]);
+	if (fd >= 42)
+		fd = open("./WRfile.txt", O_RDWR | O_CREAT | O_TRUNC);
+	errno = 0;
 	buf = argv[2];
 	len = atoi(argv[3]);
 	ret = ft_write(fd, buf, len);
