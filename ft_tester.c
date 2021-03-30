@@ -81,6 +81,28 @@ int ft_test_write(int argc, char **argv)
 	return (ret);
 }
 
+int ft_test_read(int argc, char **argv)
+{
+	int fd;
+	void *buf;
+	int len;
+	int ret;
+
+	if (argc != 4)
+		return (0);
+	fd = atoi(argv[1]);
+	if (fd >= 42)
+		fd = open("./WRfile.txt", O_RDWR);
+	errno = 0;
+	buf = (char *)malloc(1000 * (sizeof(char)));
+	len = atoi(argv[3]);
+	ret = ft_read(fd, buf, len);
+	printf("Read: |%s|, ret: %d\n", (char *)buf, ret);
+	if (errno != 0)
+		printf("An error occurred, errno = %d\n", errno);
+	return (ret);
+}
+
 int main(int argc, char **argv)
 {
 	if (0)
@@ -91,7 +113,9 @@ int main(int argc, char **argv)
 		ft_test_strcpy(argc, argv);
 	if (0)
 		ft_test_strcmp(argc, argv);
-	if (1)
+	if (0)
 		ft_test_write(argc, argv);
+	if (1)
+		ft_test_read(argc, argv);
 	return (0);
 }
