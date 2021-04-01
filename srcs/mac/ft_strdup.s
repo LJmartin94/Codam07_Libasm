@@ -32,26 +32,14 @@ _ft_strdup:
 	call _ft_strlen		; Get length of original string
 	inc RET				; Increment RET by 1 for Null terminator 
 	mov FST, RET		; Move RET to first argument
-	; align stack?
 	call _malloc		; Malloc space for strlen + 1 length
-	; align stack?
-	;need to check errno to see if malloc encountered an error?
-	mov FST, RET		; Move ptr returned by malloc into 1ST argument
 	pop SND				; Pop original string from stack into 2ND argument
-	call _ft_strcpy		; Call strcpy to cpy 2ND into 1ST
-	ret 				; Return the destination given by strcpy
-
-	error:
-	;jc error			; Check the carry flag for a syscall error
-	push RET						; Push syscall ret to stack (errno val)
-	;sub rsp, 8						; Align stack before function call
-	call ___error					; Get errno location, save ptr in RET
-	;add rsp, 8						; Re-align stack after function call
-	pop VAL							; Fetch errno val from stack into VAL
-	mov [RET], VAL					; Move VAL into errno loc pointed to by RET
-	mov RET, -1						; Make return -1
-	ret								; Return
-
+	cmp RET, 0x0		; Check for malloc fail
+	je end				; And jump to end if so
+	mov FST, RET		; Move ptr returned by malloc into 1ST argument
+	call _ft_strcpy		; Call strcpy to cpy 2ND into 1ST			
+	end:
+	ret					; Return the destination given by strcpy or NULL
 
 ;  char *strdup(const char *s1);
 ;  The strdup() function allocates sufficient memory for a copy of the string s1, does the copy, and returns a

@@ -113,10 +113,10 @@ int ft_test_strdup(int argc, char **argv)
 		return (0);
 	str1 = argv[1];
 	//str1 = "This is a test string";
-	printf("Strlen: %lu\n", ft_strlen(str1));
+	//printf("Strlen: %lu\n", ft_strlen(str1));
 	str3 = (char *)malloc(1000 * (sizeof(char)));
 	ft_strcpy(str3, str1);
-	printf("Strcpy: |%s|\n", str3);
+	//printf("Strcpy: |%s|\n", str3);
 	str2 = ft_strdup(str1);
 	str1 = "a";
 	printf("Strdup: |%s|\n", str2);
