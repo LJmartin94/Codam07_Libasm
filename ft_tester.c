@@ -103,6 +103,26 @@ int ft_test_read(int argc, char **argv)
 	return (ret);
 }
 
+int ft_test_strdup(int argc, char **argv)
+{
+	char *str1;
+	char *str2;
+	char *str3;
+
+	if (argc != 2)
+		return (0);
+	str1 = argv[1];
+	//str1 = "This is a test string";
+	printf("Strlen: %lu\n", ft_strlen(str1));
+	str3 = (char *)malloc(1000 * (sizeof(char)));
+	ft_strcpy(str3, str1);
+	printf("Strcpy: |%s|\n", str3);
+	str2 = ft_strdup(str1);
+	str1 = "a";
+	printf("Strdup: |%s|\n", str2);
+	return (0);
+}
+
 int main(int argc, char **argv)
 {
 	if (0)
@@ -115,7 +135,9 @@ int main(int argc, char **argv)
 		ft_test_strcmp(argc, argv);
 	if (0)
 		ft_test_write(argc, argv);
-	if (1)
+	if (0)
 		ft_test_read(argc, argv);
+	if (1)
+		ft_test_strdup(argc, argv);
 	return (0);
 }

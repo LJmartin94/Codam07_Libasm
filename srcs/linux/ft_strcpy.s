@@ -25,7 +25,10 @@ section .text
 
 global ft_strcpy
 ft_strcpy:
+	push DST
+	mov DST, SRC
 	call ft_strlen				; Fetch the length of SRC string
+	pop DST
 	mov INX, RET				; Index = the return val from ft_strlen
 	mov RET, DST				; Return val = Destination passed as arg
 	loop:						; Copy string from back to front
