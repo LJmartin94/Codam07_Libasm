@@ -29,7 +29,7 @@ section .text
 
 global ft_read
 ft_read:
-	mov SYS, READ					; Select the write system call
+	mov SYS, READ					; Select the read system call
 	syscall							; Perform syscall
 	cmp RET, 0						; Compare ret val to 0
 	jl error						; Jump if negative, indicates error

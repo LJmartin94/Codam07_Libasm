@@ -15,11 +15,13 @@ extern ___error
 ; Defining user-friendly register and syscall names:
 %define WRITE 0x2000004
 %define SYS rax
-
 %define RET rax
+
 %define FD rdi
 %define BUF rsi
 %define LEN rdx
+
+%define VAL rdi
 
 section .bss
 
@@ -27,15 +29,17 @@ section .text
 
 global _ft_write
 _ft_write:
-	mov SYS, WRITE	; Select the write system call
-	syscall			; Perform syscall
-	jc error		; Check the carry flag for a syscall error
-	ret 			; Return the value in rax
+	mov SYS, WRITE					; Select the write system call
+	syscall							; Perform syscall
+	jc error						; Check the carry flag for a syscall error
+	ret 							; Otherwise return the value in rax
 
-	error
-	mov RET, -1
-	ret
-
-	; sub rsp, 8
-	; call ___error	; Set errno if error occurred.
-	; add rsp, 8
+	error:
+	push RET						; Push syscall ret to stack (errno val)
+	;sub rsp, 8						; Align stack before function call
+	call ___error					; Get errno location, save ptr in RET
+	;add rsp, 8						; Re-align stack after function call
+	pop VAL							; Fetch errno val from stack into VAL
+	mov [RET], VAL					; Move VAL into errno loc pointed to by RET
+	mov RET, -1						; Make return -1
+	ret								; Return

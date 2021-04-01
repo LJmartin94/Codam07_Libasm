@@ -1,1 +1,1 @@
-some random text
+Some random strings
