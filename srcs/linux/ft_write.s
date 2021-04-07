@@ -45,3 +45,4 @@ ft_write:
 	mov [RET], VAL					; Move VAL into errno loc pointed to by RET
 	mov RET, -1						; Make return -1
 	ret								; Return
+	

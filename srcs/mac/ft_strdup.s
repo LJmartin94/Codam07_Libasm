@@ -14,7 +14,6 @@ section .data
 extern _ft_strlen
 extern _malloc
 extern _ft_strcpy
-extern ___error
 ; Defining registers with friendly variable names:
 %define RET rax
 %define FST rdi
