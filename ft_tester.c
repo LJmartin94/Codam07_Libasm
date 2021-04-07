@@ -131,13 +131,13 @@ int main(int argc, char **argv)
 		ft_test_strlen(argc, argv);
 	if (0)
 		ft_test_strcpy(argc, argv);
-	if (0)
+	if (1)
 		ft_test_strcmp(argc, argv);
 	if (0)
 		ft_test_write(argc, argv);
 	if (0)
 		ft_test_read(argc, argv);
-	if (1)
+	if (0)
 		ft_test_strdup(argc, argv);
 	return (0);
 }

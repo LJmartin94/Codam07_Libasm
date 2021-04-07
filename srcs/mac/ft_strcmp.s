@@ -29,22 +29,25 @@ _ft_strcmp:
 	;{
 		mov CHR, byte [S1+INX]	; Copy the character to compare from S1 to buf
 		cmp CHR, byte [S2+INX]	; Compare S1 char to S2 char
-		jl negative				; If S2 > S1, go to negative
-		jg positive				; If S1 > S2, go to positive
+		jne	not_equal			; If S1[x] != S2[x] compare them more closely
 		cmp CHR, 0x0			; Check for null terminator
 		je equal				; Quit if null terminator found
 		inc INX					; Else increment index
 		jmp loop				; And begin from the start again
 	;}
 
-	equal:
-	mov RET, 0					; Make ret 0 
-	ret							; Return
+	not_equal:
+	sub CHR, byte [S2+INX]		; Subtract S2 from S1 as unsigned char 
+    jnc positive 				; if no substraction overflow, S1 > S2
 	
-	negative:
+	negative:					; else S1 < S2
 	mov RET, -1					; Make ret -1
 	ret							; Return
 
 	positive:
 	mov RET, 1					; Make ret 1
 	ret							; Return
+
+	equal:
+	mov RET, 0					; Make ret 0 
+	ret							; Return	
