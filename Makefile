@@ -6,7 +6,7 @@
 #    By: limartin <limartin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/07/21 21:07:36 by limartin      #+#    #+#                  #
-#    Updated: 2021/03/25 13:30:27 by limartin      ########   odam.nl          #
+#    Updated: 2021/04/07 16:39:24 by limartin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ SRC		= $(SRC_PATH)$(OS_PATH)ft_strlen.s \
 	$(SRC_PATH)$(OS_PATH)ft_write.s \
 	$(SRC_PATH)$(OS_PATH)ft_read.s \
 	$(SRC_PATH)$(OS_PATH)ft_strdup.s \
-	$(SRC_PATH)$(OS_PATH)spark.s \
 
 
 #Object files
