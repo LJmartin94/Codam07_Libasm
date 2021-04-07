@@ -4,7 +4,6 @@
 #include <string.h>
 #include <errno.h>
 #include <fcntl.h>
-//int compare(int64_t a, int64_t b);
 #include "ft_libasm.h"
 
 int ft_test_strcmp(int argc, char **argv)
@@ -43,19 +42,6 @@ int ft_test_strlen(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	printf("%lu\n",ft_strlen(argv[1]));
-	return (0);
-}
-
-int ft_test_compare(int argc, char **argv)
-{
-	int a;
-	int b;
-
-	if (argc != 3)
-		return (0);
-	a = atoi(argv[1]);
-	b = atoi(argv[2]);
-	//printf("%d\n", compare(a, b));
 	return (0);
 }
 
@@ -112,11 +98,8 @@ int ft_test_strdup(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	str1 = argv[1];
-	//str1 = "This is a test string";
-	//printf("Strlen: %lu\n", ft_strlen(str1));
 	str3 = (char *)malloc(1000 * (sizeof(char)));
 	ft_strcpy(str3, str1);
-	//printf("Strcpy: |%s|\n", str3);
 	str2 = ft_strdup(str1);
 	str1 = "a";
 	printf("Strdup: |%s|\n", str2);
@@ -125,19 +108,24 @@ int ft_test_strdup(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-	if (0)
-		ft_test_compare(argc, argv);
-	if (0)
-		ft_test_strlen(argc, argv);
-	if (0)
-		ft_test_strcpy(argc, argv);
-	if (1)
-		ft_test_strcmp(argc, argv);
-	if (0)
-		ft_test_write(argc, argv);
-	if (0)
-		ft_test_read(argc, argv);
-	if (0)
-		ft_test_strdup(argc, argv);
+	argc--;
+	if (ft_strlen(argv[1]) < 4)
+		ft_write(1, "Please specify the function to test in first arg: \
+	strlen, strcpy, strcmp, write, read, strdup", 94);
+	else if (argv[1][3] == 'l' || 0)
+		ft_test_strlen(argc, &(argv[1]));
+	else if (argv[1][4] == 'p' || 0)
+		ft_test_strcpy(argc, &(argv[1]));
+	else if (argv[1][4] == 'm' || 0)
+		ft_test_strcmp(argc, &(argv[1]));
+	else if (argv[1][0] == 'w' || 0)
+		ft_test_write(argc, &(argv[1]));
+	else if (argv[1][0] == 'r' || 0)
+		ft_test_read(argc, &(argv[1]));
+	else if (argv[1][3] == 'd' || 0)
+		ft_test_strdup(argc, &(argv[1]));
+	else
+		ft_write(1, "Please specify the function to test in first arg: \
+	strlen, strcpy, strcmp, write, read, strdup", 94);
 	return (0);
 }
