@@ -36,9 +36,7 @@ _ft_read:
 
 	error:
 	push RET						; Push current value to stack (errno val)
-	;sub rsp, 8						; Align stack before function call
 	call ___error					; Get errno location, save ptr in RET
-	;add rsp, 8						; Re-align stack after function call
 	pop VAL							; Fetch errno val from stack into VAL
 	mov [RET], VAL					; Move VAL into errno loc pointed to by RET
 	mov RET, -1						; Make return -1
