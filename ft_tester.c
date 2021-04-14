@@ -98,31 +98,42 @@ int ft_test_strdup(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	str1 = argv[1];
-	str3 = (char *)malloc(1000 * (sizeof(char)));
-	ft_strcpy(str3, str1);
 	str2 = ft_strdup(str1);
 	str1 = "a";
 	printf("Strdup: |%s|\n", str2);
 	return (0);
 }
 
+int	check_function(const char *input, const char *compare)
+{
+	if(strcmp(input, compare) == 0)
+		return (1);
+	else
+		return (0);
+}
+
 int main(int argc, char **argv)
 {
 	argc--;
-	if (ft_strlen(argv[1]) < 4)
+	if (!(check_function(argv[1], "strlen") || \
+	check_function(argv[1], "strcpy") || \
+	check_function(argv[1], "strcmp") || \
+	check_function(argv[1], "write") || \
+	check_function(argv[1], "read") || \
+	check_function(argv[1], "strdup")))
 		ft_write(1, "Please specify the function to test in first arg: \
 	strlen, strcpy, strcmp, write, read, strdup", 94);
-	else if (argv[1][3] == 'l' || 0)
+	else if (check_function(argv[1], "strlen") || 0)
 		ft_test_strlen(argc, &(argv[1]));
-	else if (argv[1][4] == 'p' || 0)
+	else if (check_function(argv[1], "strcpy") || 0)
 		ft_test_strcpy(argc, &(argv[1]));
-	else if (argv[1][4] == 'm' || 0)
+	else if (check_function(argv[1], "strcmp") || 0)
 		ft_test_strcmp(argc, &(argv[1]));
-	else if (argv[1][0] == 'w' || 0)
+	else if (check_function(argv[1], "write") || 0)
 		ft_test_write(argc, &(argv[1]));
-	else if (argv[1][0] == 'r' || 0)
+	else if (check_function(argv[1], "read") || 0)
 		ft_test_read(argc, &(argv[1]));
-	else if (argv[1][3] == 'd' || 0)
+	else if (check_function(argv[1], "strdup") || 0)
 		ft_test_strdup(argc, &(argv[1]));
 	else
 		ft_write(1, "Please specify the function to test in first arg: \
