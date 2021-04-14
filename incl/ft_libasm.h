@@ -1,7 +1,8 @@
-#ifndef LIBASM_H
-# define LIBASM_H
+#ifndef FT_LIBASM_H
+# define FT_LIBASM_H
 
-#include <errno.h>
+# include <errno.h>
+# include <sys/types.h>
 
 unsigned long	ft_strlen(char *str);
 char			*ft_strcpy(char *dst, char *src);
