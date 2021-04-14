@@ -1,10 +1,9 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
-#include <errno.h>
-#include <fcntl.h>
-#include "ft_libasm.h"
+#include <stdlib.h> // header for malloc
+#include <stdio.h> // header for printf
+#include <string.h> // header for strlen, strcmp
+#include <errno.h> // header to manipulate errno
+#include <fcntl.h> // header for open
+#include "ft_libasm.h" // header for this project
 
 int ft_test_strcmp(int argc, char **argv)
 {
@@ -13,7 +12,10 @@ int ft_test_strcmp(int argc, char **argv)
 	int ret;
 
 	if (argc != 3)
+	{
+		printf("Strcmp takes two arguments, the two strings to be compared\n");
 		return (0);
+	}
 	s1 = argv[1];
 	s2 = argv[2];
 	ret = ft_strcmp(s1, s2);
@@ -26,8 +28,11 @@ int ft_test_strcpy(int argc, char **argv)
 	char *src;
 	char *dest;
 
-	if (argc != 2)
+	if (argc != 3)
+	{
+		printf("Strcpy takes two arguments, the dest and the string to be copied\n");
 		return (0);
+	}
 	src = argv[1];
 	dest = (char *)malloc(sizeof(char) * (strlen(argv[1]) + 1));
 	ft_strcpy(dest, src);
@@ -40,7 +45,10 @@ int ft_test_strcpy(int argc, char **argv)
 int ft_test_strlen(int argc, char **argv)
 {
 	if (argc != 2)
+	{
+		printf("Strlen takes one argument, the string to be measured\n");
 		return (0);
+	}
 	printf("%lu\n",ft_strlen(argv[1]));
 	return (0);
 }
@@ -53,7 +61,10 @@ int ft_test_write(int argc, char **argv)
 	int ret;
 
 	if (argc != 4)
+	{
+		printf("Write takes three arguments, the fd, the buf and the len\n");
 		return (0);
+	}
 	fd = atoi(argv[1]);
 	if (fd >= 42)
 		fd = open("./WRfile.txt", O_RDWR | O_CREAT | O_TRUNC);
@@ -75,7 +86,10 @@ int ft_test_read(int argc, char **argv)
 	int ret;
 
 	if (argc != 4)
+	{
+		printf("Read takes three arguments, the fd, the buf and the len\n");
 		return (0);
+	}
 	fd = atoi(argv[1]);
 	if (fd >= 42)
 		fd = open("./WRfile.txt", O_RDWR);
@@ -96,7 +110,10 @@ int ft_test_strdup(int argc, char **argv)
 	char *str3;
 
 	if (argc != 2)
+	{
+		printf("Strdup takes one argument, the string to be duplicated\n");
 		return (0);
+	}
 	str1 = argv[1];
 	str2 = ft_strdup(str1);
 	str1 = "a";
@@ -114,6 +131,8 @@ int	check_function(const char *input, const char *compare)
 
 int main(int argc, char **argv)
 {
+	if (argc <= 1)
+		return (0);
 	argc--;
 	if (!(check_function(argv[1], "strlen") || \
 	check_function(argv[1], "strcpy") || \
@@ -122,7 +141,8 @@ int main(int argc, char **argv)
 	check_function(argv[1], "read") || \
 	check_function(argv[1], "strdup")))
 		ft_write(1, "Please specify the function to test in first arg: \
-	strlen, strcpy, strcmp, write, read, strdup", 94);
+	strlen, strcpy, strcmp, write, read, strdup\n", 95);
+
 	else if (check_function(argv[1], "strlen") || 0)
 		ft_test_strlen(argc, &(argv[1]));
 	else if (check_function(argv[1], "strcpy") || 0)
@@ -137,6 +157,9 @@ int main(int argc, char **argv)
 		ft_test_strdup(argc, &(argv[1]));
 	else
 		ft_write(1, "Please specify the function to test in first arg: \
-	strlen, strcpy, strcmp, write, read, strdup", 94);
+	strlen, strcpy, strcmp, write, read, strdup\n", 95);
 	return (0);
 }
+
+ //	make re && gcc -o tester -I ./incl ./ft_tester.c libasm.a && ./tester
+ 
