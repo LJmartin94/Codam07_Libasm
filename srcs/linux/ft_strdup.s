@@ -31,7 +31,7 @@ ft_strdup:
 	call ft_strlen		; Get length of original string
 	inc RET				; Increment RET by 1 for Null terminator 
 	mov FST, RET		; Move RET to first argument
-	call malloc			; Malloc space for strlen + 1 length
+	call malloc	wrt ..plt		; Malloc space for strlen + 1 length
 	pop SND				; Pop original string from stack into 2ND argument
 	cmp RET, 0x0		; Check for malloc fail
 	je end				; And jump to end if so
